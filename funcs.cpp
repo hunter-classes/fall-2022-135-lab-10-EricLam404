@@ -48,3 +48,21 @@ TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
     TimeSlot after = {nextMovie, end};
     return after;
 }
+
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
+    int start1 = minutesSinceMidnight(ts1.startTime);
+    int start2 = minutesSinceMidnight(ts2.startTime);
+    if(start1 < start2){
+        Time end = addMinutes(ts1.startTime, ts1.movie.duration);
+        if(minutesUntil(end, ts2.startTime) < 0){
+            return true;
+        }
+    }
+    else{
+        Time end = addMinutes(ts2.startTime, ts2.movie.duration);
+        if(minutesUntil(end, ts1.startTime) < 0){
+            return true;
+        }
+    }
+    return false;
+}

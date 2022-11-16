@@ -27,7 +27,7 @@ TEST_CASE("Task C"){
     CHECK(printTimeSlot(evening) == "Black Panther ACTION (134 min) [starts at 16:45, ends by 18:59]");
 }
 
-TEST_CASE("Task C"){
+TEST_CASE("Task D"){
     Movie movie = {"Back to the Future", COMEDY, 116};
     
     TimeSlot first = {movie, {9, 15}};  
@@ -37,4 +37,18 @@ TEST_CASE("Task C"){
 
     CHECK((after.startTime.h == end.h && after.startTime.m == end.m));
 
+}
+
+TEST_CASE("Task E"){
+    Movie movie1 = {"Back to the Future", COMEDY, 120};
+    Movie movie2 = {"Black Panther", ACTION, 134};
+
+    TimeSlot timeslot1 = {movie1, {9, 15}};  
+    TimeSlot timeslot2 = {movie2, {11, 15}}; 
+    TimeSlot timeslot3 = {movie2, {12, 15}};
+    TimeSlot timeslot4 = {movie2, {14, 55}};
+    
+    CHECK(timeOverlap(timeslot1, timeslot2) == false);
+    CHECK(timeOverlap(timeslot2, timeslot3) == true);
+    CHECK(timeOverlap(timeslot3, timeslot4) == false);
 }
