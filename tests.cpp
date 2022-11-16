@@ -13,3 +13,16 @@ TEST_CASE("Task B"){
     
     CHECK((before.h == after.h && before.m == after.m));
 }
+
+TEST_CASE("Task C"){
+    Movie movie1 = {"Back to the Future", COMEDY, 116};
+    Movie movie2 = {"Black Panther", ACTION, 134};
+
+    TimeSlot morning = {movie1, {9, 15}};  
+    TimeSlot daytime = {movie2, {12, 15}}; 
+    TimeSlot evening = {movie2, {16, 45}};
+    
+    CHECK(printTimeSlot(morning) == "Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]");
+    CHECK(printTimeSlot(daytime) == "Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]");
+    CHECK(printTimeSlot(evening) == "Black Panther ACTION (134 min) [starts at 16:45, ends by 18:59]");
+}
