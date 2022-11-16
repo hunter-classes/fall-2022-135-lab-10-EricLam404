@@ -26,3 +26,15 @@ TEST_CASE("Task C"){
     CHECK(printTimeSlot(daytime) == "Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]");
     CHECK(printTimeSlot(evening) == "Black Panther ACTION (134 min) [starts at 16:45, ends by 18:59]");
 }
+
+TEST_CASE("Task C"){
+    Movie movie = {"Back to the Future", COMEDY, 116};
+    
+    TimeSlot first = {movie, {9, 15}};  
+    TimeSlot after = scheduleAfter(first, movie);
+
+    Time end = addMinutes(first.startTime, first.movie.duration);
+
+    CHECK((after.startTime.h == end.h && after.startTime.m == end.m));
+
+}

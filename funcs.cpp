@@ -42,3 +42,9 @@ std::string printTimeSlot(TimeSlot ts){
     str += " [starts at " + formatTime(ts.startTime) + ", ends by " + formatTime(end) + "]";
     return str;
 }
+
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
+    Time end = addMinutes(ts.startTime, ts.movie.duration);
+    TimeSlot after = {nextMovie, end};
+    return after;
+}
